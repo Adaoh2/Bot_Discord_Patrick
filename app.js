@@ -58,9 +58,13 @@ client.on("message", message => {
     };
 
     // MERCI ///////
-    if (message.content.startsWith(prefix + "merci")) {
-        message.channel.send("De rien")
+    if(message.content == "merci") {
+        var mercis = ["De rien", "C'est normal", "Merci qui ?? ;)", "Alors, on dit merci, mais pas s'il vous plaît ? Rhololo les jeunes aujourd'hui :O"];
+        var merci = Math.floor(Math.random() * mercis.length);
+        message.channel.send(mercis[merci]);
+
     }
+
 
 
     // SAY ///////
