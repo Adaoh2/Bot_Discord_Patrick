@@ -8,7 +8,9 @@ const config = require("./config.json");
 client.login(config.token);
 
 
-commandfile1 = require('./play.js') //if commandfile1 is in the same folder as this file
+const commandfile1 = require('./play.js') //if commandfile1 is in the same folder as this file
+//var command = ""
+
 
 // Ffonction principale du programme. Elle écoute en permanence ce qui se passe dans la
 // chatroom Discord, et répond aux messages qui correspondent aux commandes ci-dessous.
@@ -20,7 +22,7 @@ client.on("message", message => {
     const command = args.shift().toLowerCase();
 
     // Le préfixe permet au bot de savoir que la commande lui est addressée
-    var prefix = '.';
+    let prefix = '.';
 
 
     ///////////////////////////////////////////////////////////////////////////
@@ -47,21 +49,21 @@ client.on("message", message => {
 	
     // DATE ///////
     if (message.content.startsWith(prefix + "date")) {
-        var dates = ["Nous sommes le 83 Septembre 2942.", 
+        let dates = ["Nous sommes le 83 Septembre 2942.", 
 		     "Nous sommes le 12 Novembre 1983.", 
 		     "Nous sommes le 32 Décembre sur Terre.", 
 		     "Nous sommes le 57 Janvier 1773.", 
 		     "Nous sommes le 30 Février 2465,7."];
      
-	var date = Math.floor(Math.random() * dates.length);
+	let date = Math.floor(Math.random() * dates.length);
         message.channel.send(dates[date]);
 
     };
 
     // MERCI ///////
     if(message.content == "merci") {
-        var mercis = ["De rien", "C'est normal", "Merci qui ?? ;)", "Alors, on dit merci, mais pas s'il vous plaît ? Rhololo les jeunes aujourd'hui :O"];
-        var merci = Math.floor(Math.random() * mercis.length);
+        let mercis = ["De rien", "C'est normal", "Merci qui ?? ;)", "Alors, on dit merci, mais pas s'il vous plaît ? Rhololo les jeunes aujourd'hui :O"];
+        let merci = Math.floor(Math.random() * mercis.length);
         message.channel.send(mercis[merci]);
 
     };
@@ -84,7 +86,10 @@ client.on("message", message => {
 
     // PLAY ///////
 	if (message.content.startsWith(prefix + "play")) {
+		let command = ""
 		for (command in commandfile1){
+			let cmdmsg = ""
+			cmdmsg = message.content.replace(prefix, '')
 			if (cmdmsg.startsWith(commandfile1[command])){
 				commandfile1[command].variableToCallToRunFunction(arguements) //usually just .run()
 			} 
