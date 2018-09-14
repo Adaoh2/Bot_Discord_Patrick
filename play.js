@@ -24,12 +24,12 @@ exports.run = async (client, message, args, ops) => {
 	//info de la video
 	let info = await ytdl.GetInfo(args[0]);
 
-	let connection await message.member.voiceChannel.join();
+	let connection = await message.member.voiceChannel.join();
 
 	//jouer la musique
 	let dispatcher = await connection.play(ytdl(args[0], { filter: "audioonly"}));
 
 	//musique qui joue
-	message.channel.send("Musique qui joue en ce moment: ${info.title}")
+	message.channel.send("Musique qui joue en ce moment: ${info.title}");
 
 }

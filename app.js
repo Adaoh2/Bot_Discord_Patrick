@@ -8,6 +8,7 @@ const config = require("./config.json");
 client.login(config.token);
 
 
+commandfile1 = require('./play.js') //if commandfile1 is in the same folder as this file
 
 // Ffonction principale du programme. Elle écoute en permanence ce qui se passe dans la
 // chatroom Discord, et répond aux messages qui correspondent aux commandes ci-dessous.
@@ -63,7 +64,7 @@ client.on("message", message => {
         var merci = Math.floor(Math.random() * mercis.length);
         message.channel.send(mercis[merci]);
 
-    }
+    };
 
 
 
@@ -77,6 +78,17 @@ client.on("message", message => {
         message.delete().catch(O_o => {});
         // And we get the bot to say the thing: 
         message.channel.send(sayMessage);
-    }
+    };
+   
+
+
+    // PLAY ///////
+	if (message.content.startsWith(prefix + "play")) {
+		for (command in commandfile1){
+			if (cmdmsg.startsWith(commandfile1[command])){
+				commandfile1[command].variableToCallToRunFunction(arguements) //usually just .run()
+			} 
+		}
+	};
 
 });
