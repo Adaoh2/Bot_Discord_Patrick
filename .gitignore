@@ -1,5 +1,6 @@
 # exclusions de Git perso (fichiers que l'on ne veut pas mettre dans Git)
 config.json
+config.*.json
 
 
 
